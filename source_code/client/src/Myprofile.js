@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import defaultImage from "./dp.jpg";
+import defaultImage from "./profilepic.jpeg";
 import { useNavigate } from "react-router-dom";
 
 const Prodemo = () => {

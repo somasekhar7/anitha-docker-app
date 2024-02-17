@@ -6,8 +6,8 @@ const Ademo = (props) => {
   const navigate = useNavigate();
   const [num1, setNum1] = useState('');
   const [num2, setNum2] = useState('');
-  const [result,setResult] =useState(null);
-  const [resultFromClient, setResultFromClient] = useState(null);
+  const [sresult,setSresult] =useState(null);
+  const [cresult, setCresult] = useState(null);
 
   const handleCalculate =async(e) => {
    e.preventDefault();
@@ -28,12 +28,12 @@ const Ademo = (props) => {
     }
 
     const data = await response.json();
-    setResult(data.result); 
+    setSresult(data.result); 
   } catch (error) {
     console.error('Error:', error);
   }
-  const clientResult = parseFloat(num1) + parseFloat(num2);
-    setResultFromClient(clientResult);
+  const clresult = parseFloat(num1) + parseFloat(num2);
+    setCresult(clresult);
 
 }; 
 return (
@@ -50,7 +50,7 @@ return (
       <div className="container mt-5">
         <form className="mt-4" onSubmit={handleCalculate}>
           <div className="row mb-3">
-            <label htmlFor="num1" className="col-sm-4 col-form-label">Enter First Number:</label>
+            <label className="col-sm-2 col-form-label">Enter First Number:</label>
             <div className="col-sm-8">
             <input
               type="number"
@@ -62,8 +62,8 @@ return (
             </div>
           </div>
 
-          <div className="row mb-3">
-            <label htmlFor="num2" className="col-sm-4 col-form-label">Enter Second Number:</label>
+          <div className="row mb-4">
+            <label htmlFor="num2" className="col-sm-2 col-form-label">Enter Second Number:</label>
             <div className="col-sm-8">
             <input
               type="number"
@@ -78,16 +78,15 @@ return (
           <button type="submit" className="btn btn-primary" style={{backgroundColor: 'orange'}}>Submit</button>
         </form>
       </div>
-      {result !== null && (
-        <div className="mt-4">
-          <h4>Result from Server:</h4>
-          <p>{result}</p>
+      {sresult !== null && (
+        <div className="mt-4 mb-3">
+          <h4 class="ms-4">Your Addition Result(from server) is: {sresult}</h4>
+          
         </div>
       )}
-      {resultFromClient !== null && (
+      {cresult !== null && (
         <div className="mt-4">
-          <h4>Result from react:</h4>
-          <p>{resultFromClient}</p>
+          <h4 class="ms-4">Your Addition Result(from ReactJS) is: {cresult}</h4>
         </div>
       )}
       </div>
