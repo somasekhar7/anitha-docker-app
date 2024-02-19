@@ -8,6 +8,9 @@ const Ademo = (props) => {
   const [num2, setNum2] = useState('');
   const [sresult,setSresult] =useState(null);
   const [cresult, setCresult] = useState(null);
+  const myIS = {
+    color: "white",
+  };
 
   const handleCalculate =async(e) => {
    e.preventDefault();
@@ -46,6 +49,15 @@ return (
         >
           Home
         </button>
+        <div className="container-fluid d-flex justify-content-center">
+          <h1 style={myIS}>ADDITION PAGE</h1>
+        </div>
+        <button
+              className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
+              onClick={() => navigate("/Myprofile")}
+            >
+              Profile
+            </button>
       </nav>
       <div className="container mt-5">
         <form className="mt-4" onSubmit={handleCalculate}>
