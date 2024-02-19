@@ -44,7 +44,7 @@ return (
       <div>
       <nav className="navbar navbar-expand-lg navbar-light mb-1" style={{ backgroundColor: 'purple' }}>
         <button
-          className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
+          className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginLeft: '4px' }}
           onClick={() => navigate("/")}
         >
           Home
@@ -53,7 +53,7 @@ return (
           <h1 style={myIS}>ADDITION PAGE</h1>
         </div>
         <button
-              className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
+              className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '4px' }}
               onClick={() => navigate("/Myprofile")}
             >
               Profile

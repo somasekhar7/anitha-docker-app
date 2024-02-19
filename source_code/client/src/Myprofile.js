@@ -11,10 +11,11 @@ const Prodemo = () => {
   const myIS = {
     color: "white",
   };
+  
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light mb-1" style={{ backgroundColor: 'purple' }}>
+      <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: 'purple' }}>
         <button
           className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
           onClick={() => navigate("/")}
