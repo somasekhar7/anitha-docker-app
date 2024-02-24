@@ -37,6 +37,8 @@ const Ademo = (props) => {
   }
   const clresult = parseFloat(int1) + parseFloat(int2);
     setCresult(clresult);
+  const srresult = parseFloat(int1) + parseFloat(int2);
+    setSresult(srresult);
 
 }; 
 return (
