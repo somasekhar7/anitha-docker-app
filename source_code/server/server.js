@@ -1,8 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const port = 8000;
+const host=process.env.HOSTNAME ||'http://ec2-3-15-32-113.us-east-2.compute.amazonaws.com';
 const bodyParser = require('body-parser');
 const app = express();
+const path = require('path');
+app.use(express.static(path.join(__dirname,'public')))
 
 
 app.use(bodyParser.json());

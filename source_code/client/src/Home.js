@@ -16,7 +16,7 @@ const Person = (props) => {
         </div>
         <div className="d-flex">
             <button
-              className="btn btn-info mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
+              className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
               onClick={() => navigate("/Myprofile")}
             >
               Profile
