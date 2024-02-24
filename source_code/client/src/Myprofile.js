@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import defaultImage from "./profilepic.jpeg";
+import img from "./profilepic.jpeg";
 import { useNavigate } from "react-router-dom";
 
 const Prodemo = () => {
   const [name, setName] = useState("Anitha Reddy Bapathu");
   const [description, setDescription] = useState("I am a student at Suny Albany pursuing my masters in Computer Science.I am a motivated and detail-oriented student with a strong academic record and a passion for learning. I have finished my undergraduation in Computer Science from Vasireddy Venkatadri Institute of Technology.After that i have done internship on manual Testing for two months at Cognizant.I am very passionate about programming and would love to solve problems by finding the logic.");
   const [isMod, setIsMod] = useState(false);
-  const [image, setImage] = useState(defaultImage);
   const navigate = useNavigate();
   const myIS = {
     color: "white",
@@ -15,9 +14,9 @@ const Prodemo = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: 'purple' }}>
+      <nav className="navbar navbar-expand-lg" style={{ backgroundColor: 'purple' }}>
         <button
-          className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
+          className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginLeft: '4px' }}
           onClick={() => navigate("/")}
         >
           Home
@@ -35,7 +34,7 @@ const Prodemo = () => {
       <div className="container mt-5">
         <div className="row">
           <div className="col-4">
-            <img src={image} alt="User" className="img-fluid border border-danger-subtle " style={{ width: "300px", height: "300px" }} />
+            <img src={img} alt="User" className="img-fluid border border-danger-subtle " style={{ width: "300px", height: "300px" }} />
           </div>
           <div className="col-8" >
             <div className="row mb-4">
@@ -59,14 +58,14 @@ const Prodemo = () => {
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                     />
-                    <button className="btn mt-2" style={{ backgroundColor: 'orange'}} onClick={()=>setIsMod(false)}>
+                    <button className="btn btn-danger mt-2" style={{ backgroundColor: 'orange'}} onClick={()=>setIsMod(false)}>
                       Save Changes
                     </button>
                   </>
                 ) : (
                   <div>
                     <p className = "text-justify">{description}</p>
-                    <button className="btn mt-2" style={{ backgroundColor: 'orange'}} onClick={()=>setIsMod(true)}>
+                    <button className="btn btn-danger mt-2" style={{ backgroundColor: 'orange'}} onClick={()=>setIsMod(true)}>
                       Edit
                     </button>
                   </div>

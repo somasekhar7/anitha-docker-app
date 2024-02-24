@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const Ademo = (props) => {
   const navigate = useNavigate();
-  const [num1, setNum1] = useState('');
-  const [num2, setNum2] = useState('');
+  const [int1, setInt1] = useState('');
+  const [int2, setInt2] = useState('');
   const [sresult,setSresult] =useState(null);
   const [cresult, setCresult] = useState(null);
   const myIS = {
@@ -21,8 +21,8 @@ const Ademo = (props) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        num1,
-        num2,
+        int1,
+        int2,
       }),
     });
 
@@ -30,12 +30,12 @@ const Ademo = (props) => {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    const data = await response.json();
-    setSresult(data.result); 
+    const op = await response.json();
+    setSresult(op.sum); 
   } catch (error) {
     console.error('Error:', error);
   }
-  const clresult = parseFloat(num1) + parseFloat(num2);
+  const clresult = parseFloat(int1) + parseFloat(int2);
     setCresult(clresult);
 
 }; 
@@ -60,34 +60,34 @@ return (
             </button>
       </nav>
       <div className="container mt-5">
-        <form className="mt-4" onSubmit={handleCalculate}>
+        <form className="mt-4">
           <div className="row mb-3">
-            <label className="col-sm-2 col-form-label">Enter First Number:</label>
-            <div className="col-sm-8">
+            <label className="col-2 col-form-label">Enter First Number:</label>
+            <div className="col-8">
             <input
               type="number"
               className="form-control"
-              id="num1"
-              value={num1}
-              onChange={(e) => setNum1(e.target.value)}
+              id="int1"
+              value={int1}
+              onChange={(e) => setInt1(e.target.value)}
             />
             </div>
           </div>
 
           <div className="row mb-4">
-            <label htmlFor="num2" className="col-sm-2 col-form-label">Enter Second Number:</label>
-            <div className="col-sm-8">
+            <label className="col-2 col-form-label">Enter Second Number:</label>
+            <div className="col-8">
             <input
               type="number"
               className="form-control"
-              id="num2"
-              value={num2}
-              onChange={(e) => setNum2(e.target.value)}
+              id="int2"
+              value={int2}
+              onChange={(e) => setInt2(e.target.value)}
             />
             </div>
           </div>
 
-          <button type="submit" className="btn btn-primary" style={{backgroundColor: 'orange'}}>Submit</button>
+          <button type="button" className="btn btn-danger" style={{backgroundColor: 'orange'}} onClick={handleCalculate}>Submit</button>
         </form>
       </div>
       {sresult !== null && (

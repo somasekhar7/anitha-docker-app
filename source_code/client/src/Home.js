@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Pp from "./Myprofile";
-import Ap from "./Myadd";
+
 
 const Person = (props) => {
   const navigate = useNavigate();
@@ -13,11 +12,11 @@ const Person = (props) => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light mb-1" style={{ backgroundColor: 'purple' }}>
         <div className="container-fluid d-flex justify-content-center">
-          <h1 style={myIS}>SE ASSIGNMENT</h1>
+          <h1 style={myIS}>ANITHA REDDY BAPATHU</h1>
         </div>
         <div className="d-flex">
             <button
-              className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
+              className="btn btn-info mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
               onClick={() => navigate("/Myprofile")}
             >
               Profile

@@ -1,19 +1,20 @@
 const express = require('express');
+const cors = require('cors');
+const port = 8000;
 const bodyParser = require('body-parser');
 const app = express();
-const port = 8000;
-const cors = require('cors');
+
 
 app.use(bodyParser.json());
 app.use(cors());
 app.post('/api/calculate', (req,res)=>{
-  const{num1, num2}=req.body;
-  const parsedNum1=parseInt(num1);
-  const parsedNum2=parseInt(num2);
+  const{int1, int2}=req.body;
+  const parsedNum1=parseInt(int1);
+  const parsedNum2=parseInt(int2);
   
 
-  const result=parsedNum1+parsedNum2;
-  res.json({result});
+  const sum=parsedNum1+parsedNum2;
+  res.json({sum});
 });
 
 app.listen(port, () => {
