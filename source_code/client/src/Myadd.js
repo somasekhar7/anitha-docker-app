@@ -15,7 +15,7 @@ const Ademo = (props) => {
   const handleCalculate =async(e) => {
    e.preventDefault();
    try {
-    const response = await fetch('http://ec2-3-144-153-119.us-east-2.compute.amazonaws.com:8000/api/calculate', {
+    const response = await fetch('http://ec2-3-143-230-247.us-east-2.compute.amazonaws.com/api/calculate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
