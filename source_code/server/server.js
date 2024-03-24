@@ -30,13 +30,13 @@ app.post('/api/calculate', (req,res)=>{
 
 
 
-// Connect to MongoDB Atlas
+
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log('Connected to MongoDB Atlas'))
 .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
-// Define schema and model
+
 AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
@@ -49,28 +49,28 @@ const itemSchema = new mongoose.Schema({
   name: String,
   quantity: Number,
   imageUrl: String,
-  // Add other fields as needed
+  
 });
 
 const Item = mongoose.model('Item', itemSchema);
 
 
-// API endpoint to add an item with image upload
+
 app.post('/api/addItem', upload.single('image'),async(req, res) => {
   console.log(req.body);
   try {
       const { name, quantity} = req.body;
-      const image = req.file; // Access uploaded file data
+      const image = req.file; 
 
       if (!image) {
         return res.status(400).json({ error: 'No file uploaded.' });
       }
-      // Upload image to S3
+      
       const uploadParams = {
           Bucket: 'new-se3-images',
-          Key: `${Date.now()}_${image.originalname}`, // Generate a unique key for the image
+          Key: `${Date.now()}_${image.originalname}`, 
           Body: image.buffer,
-          ACL:"public-read", // Assuming image is received as a buffer
+          ACL:"public-read",
       };
     
       const s3Data = await s3.upload(uploadParams).promise();
@@ -78,15 +78,15 @@ app.post('/api/addItem', upload.single('image'),async(req, res) => {
 
       
 
-      // Create a new item document
+      
       const newItem = new Item({
           name,
           quantity,
           imageUrl,
-          // Add other fields as needed
+          
       });
 
-      // Save the new item to the database
+     
       await newItem.save();
 
       res.status(201).json({ message: 'Item added successfully' });
@@ -97,7 +97,7 @@ app.post('/api/addItem', upload.single('image'),async(req, res) => {
 });
 app.delete('/api/deleteItem/:itemId', async (req, res) => {
   try {
-    // Find the item by ID and delete it
+    
     const deletedItem = await Item.findByIdAndDelete(req.params.itemId);
 
     if (!deletedItem) {
@@ -112,18 +112,18 @@ app.delete('/api/deleteItem/:itemId', async (req, res) => {
 });
 app.get('/api/renderItems', async (req, res) => {
   try {
-    // Fetch all inventory items from the database
+    
     const items = await Item.find();
-    res.json(items); // Send the fetched items as JSON response
+    res.json(items); 
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Internal server error' }); // Handle error
+    res.status(500).json({ message: 'Internal server error' }); 
   }
 });
 app.post('/api/updateItem/:itemId', async (req, res) => {
   console.log(req.body);
   try {
-    // Find the item by ID
+    
     const item = await Item.findById(req.params.itemId);
 
 
@@ -131,13 +131,12 @@ app.post('/api/updateItem/:itemId', async (req, res) => {
       return res.status(404).json({ error: 'Item not found' });
     }
 
-    // Update item properties
+    
     item.name = req.body.name || item.name;
     item.quantity = req.body.quantity || item.quantity ;
     console.log(item.name+' '+item.quantity);
 
-    // Save the updated item
-    // await updatedItem.save();
+    
     await item.save();
 
     res.json({ message: 'Item updated successfully', item });
