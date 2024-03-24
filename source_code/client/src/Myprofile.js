@@ -24,12 +24,20 @@ const Prodemo = () => {
         <div className="container-fluid d-flex justify-content-center">
           <h1 style={myIS}>PROFILE PAGE</h1>
         </div>
+        <div className="d-flex">
         <button
               className="btn btn-danger ml-2" style={{ backgroundColor: 'orange' ,marginRight: '4px' }}
               onClick={() => navigate("/Myadd")}
             >
               Addition
             </button>
+          <button className="btn btn-danger ml-2" style={{ backgroundColor: 'orange' ,marginRight: '4px' }} onClick={() => navigate("/MyInventory")}>
+            Inventory
+          </button>
+          <button className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }} onClick={() => navigate("/MyAPI")}>
+            API
+          </button>
+        </div>
       </nav>
       <div className="container mt-5">
         <div className="row">
