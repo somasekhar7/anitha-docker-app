@@ -3,11 +3,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #F9D477; /* Yellow */
+    
     padding: 20px;
     border-radius: 10px;
     margin: 50px auto;
-    width: 300px;
+    width: 400px;
   }
   
   .weather-container input,
@@ -16,7 +16,7 @@
     padding: 8px;
     border-radius: 5px;
     border: none;
-    background-color:#FFA07A;
+
   }
   
   .weather-details {

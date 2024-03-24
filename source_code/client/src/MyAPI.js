@@ -52,23 +52,26 @@ const APIdemo = () => {
                     </button>
                 </div>
             </nav>
-            <div className="weather-container">
+            <div style={{ backgroundColor: 'purple'}} className="weather-container">
             <header className="App-header">
-                <h1 align="center">Weather Data</h1>
+                <h1 align="center" style={myIS}>WEATHER DATA</h1>
+               
             </header>
             <input
                 type="text"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 placeholder="City[Ex:Boston,Memphis]"
+                style={{ backgroundColor: 'orange'}}
             />
             <input
                 type="text"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 placeholder="Country (optional)"
+                style={{ backgroundColor: 'orange'}}
             />
-            <button onClick={fetchWeather}>Get Weather</button>
+            <button style={{ backgroundColor: 'orange'}} onClick={fetchWeather}>Get Weather</button>
             {error && <div className="error-message">City not found. Please enter a valid city.</div>}
             {weather && !error && (
                 <div className="weather-details">
