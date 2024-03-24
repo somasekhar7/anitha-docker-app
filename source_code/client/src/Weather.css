@@ -1,0 +1,39 @@
+.weather-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F9D477; /* Yellow */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 50px auto;
+    width: 300px;
+  }
+  
+  .weather-container input,
+  .weather-container button {
+    margin: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    background-color:#FFA07A;
+  }
+  
+  .weather-details {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .weather-details h2 {
+    color: #FFA07A; /* Light Salmon */
+  }
+  
+  .weather-details p {
+    color: #9370DB; /* Medium Purple */
+  }
+  
+  .weather-details img {
+    width: 50px;
+    height: 50px;
+  }
+  
