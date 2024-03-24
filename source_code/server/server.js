@@ -160,24 +160,21 @@ app.get('/api/getItem/:itemId', async (req, res) => {
   }
 });
 
-app.get('api/weather', async (req, res) => {
-  const { city, state, country } = req.query;
-  let queryParam = city;
-  if (state) queryParam += `,${state}`;
-  if (country) queryParam += `,${country}`;
 
-  try {
-      const apiKey = process.env.WEATHERBIT_API_KEY;
-      // Adjust the API request URL based on whether state and country are provided.
-      const url = `https://api.weatherbit.io/v2.0/current?city=${encodeURIComponent(queryParam)}&key=${apiKey}`;
-      const response = await axios.get(url);
-      res.json(response.data);
-  } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Error fetching weather data from Weatherbit' });
-  }
+const OPENWEATHER_API_KEY = '28b4b6abaa66eaa8ed93d255168e4a9f';
+
+app.get('/weather', async (req, res) => {
+    const { city, country } = req.query;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${OPENWEATHER_API_KEY}&units=metric`;
+
+    try {
+        const response = await axios.get(url);
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error fetching data from OpenWeather API:', error);
+        res.status(500).json({ message: 'Error fetching data', error: error.response.data });
+    }
 });
-
 
 
 
