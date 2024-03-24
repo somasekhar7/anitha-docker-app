@@ -60,7 +60,7 @@ const APIdemo = () => {
                 type="text"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                placeholder="City"
+                placeholder="City[Ex:Boston,Memphis]"
             />
             <input
                 type="text"
