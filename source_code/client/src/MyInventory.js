@@ -1,5 +1,5 @@
 import React from "react";
-import { useState} from 'react';
+import { useState,useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 
 
@@ -23,11 +23,27 @@ const Indemo = () => {
 
     
     const [selectedItemId, setSelectedItemId] = useState(null);
-   
+    const [nameError, setNameError] = useState('');
+    const [quantityError, setQuantityError] = useState('');
+    const [imageError, setImageError] = useState('');
    
     const handleModalClose = () => {
         setIsModal(false);
+        resetFormFields();
     };
+    const resetFormFields = () => {
+        setIName('');
+        setIQuantity('');
+        setImage(null);
+        setNameError('');
+        setQuantityError('');
+        setImageError('');
+    };
+    useEffect(() => {
+        if (isModal) {
+            resetFormFields(); 
+        }
+    }, [isModal]);
 
     
 
@@ -48,6 +64,26 @@ const Indemo = () => {
 
     };
     const handleAddItem = async (e) => {
+        setNameError('');
+  setQuantityError('');
+  setImageError('');
+
+  
+  let hasError = false;
+  if (!iName) {
+    setNameError('Please enter item name');
+    hasError = true;
+  }
+  if (!iQuantity) {
+    setQuantityError('Please enter item quantity');
+    hasError = true;
+  }
+  if (!image) {
+    setImageError('Please upload item image');
+    hasError = true;
+  }
+
+  if (hasError) return; 
         try {
             const formData = new FormData();
             formData.append('name', iName);
@@ -62,6 +98,7 @@ const Indemo = () => {
             if (res.ok) {
                 console.log('Item added successfully');
                 setIsModal(false);
+                resetFormFields();
                 handleRenderItems();
             } else {
                 console.error('Failed to add item');
@@ -176,13 +213,16 @@ const Indemo = () => {
                         <div className="modal-body">
                             <form>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" placeholder="Item Name"  onChange={(e) => setIName(e.target.value)} />
+                                    <input type="text" className="form-control" placeholder="Item Name"  onChange={(e) => setIName(e.target.value)} required/>
+                                    {nameError && <p className="text-danger">{nameError}</p>}
                                 </div>
                                 <div className="form-group">
-                                    <input type="number" className="form-control" placeholder="Quantity" onChange={(e) => setIQuantity(e.target.value)} />
+                                    <input type="number" className="form-control" placeholder="Quantity" onChange={(e) => setIQuantity(e.target.value)} required/>
+                                    {quantityError && <p className="text-danger">{quantityError}</p>}
                                 </div>
                                 <div className="form-group">
-                                    <input type="file" className="form-control-file" placeholder="Upload item image" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
+                                    <input type="file" className="form-control-file" placeholder="Upload item image" accept="image/*" onChange={(e) => setImage(e.target.files[0])} required />
+                                    {imageError && <p className="text-danger">{imageError}</p>}
                                 </div>
                             </form>
                         </div>
