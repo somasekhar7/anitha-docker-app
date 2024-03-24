@@ -27,6 +27,18 @@ const Person = (props) => {
             >
               Addition
             </button>
+            <button
+              className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
+              onClick={() => navigate("/MyInventory")}
+            >
+              Inventory
+            </button>
+            <button
+              className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
+              onClick={() => navigate("/MyAPI")}
+            >
+              API
+            </button>
           </div>
       </nav>
     </>
