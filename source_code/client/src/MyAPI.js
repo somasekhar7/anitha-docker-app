@@ -6,27 +6,27 @@ import './Weather.css';
 
 const APIdemo = () => {
     const [city, setCity] = useState('');
-    const [state, setState] = useState('');
     const [country, setCountry] = useState('');
     const [weather, setWeather] = useState(null);
-    const [error, setError] = useState(false); // State to manage error message
+    const [error, setError] = useState(false);
 
     const fetchWeather = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/api/weather`, { 
-                params: { city, state, country } 
+            const response = await axios.get(`http://localhost:3001/weather`, { 
+                params: { city, country } 
             });
-            if (response.data.data.length > 0) {
-                setWeather(response.data.data[0]);
-                setError(false); // Reset error state if city found
+            if (response.data) {
+                setWeather(response.data);
+                setError(false);
             } else {
-                setError(true); // Set error state if city not found
+                setError(true);
             }
         } catch (error) {
             console.error(error);
-            setError(true); // Set error state for any error during API call
+            setError(true);
         }
     };
+
     const navigate = useNavigate();
     const myIS = {
         color: "white",
@@ -64,32 +64,22 @@ const APIdemo = () => {
             />
             <input
                 type="text"
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-                placeholder="State (optional)"
-            />
-            <input
-                type="text"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 placeholder="Country (optional)"
             />
             <button onClick={fetchWeather}>Get Weather</button>
-            {error && (
-                <div className="error-message">
-                    City not found. Please enter a valid city.
-                </div>
-            )}
+            {error && <div className="error-message">City not found. Please enter a valid city.</div>}
             {weather && !error && (
                 <div className="weather-details">
-                    <h2>{weather.city_name}</h2>
-                    <p>{weather.weather.description}</p>
-                    <img src={`https://www.weatherbit.io/static/img/icons/${weather.weather.icon}.png`} alt="Weather Icon" />
-                    <p>{weather.temp}°C</p>
+                    <h2>{weather.name}, {weather.sys.country}</h2>
+                    <p>{weather.weather[0].description}</p>
+                    <img src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="Weather Icon" />
+                    <p>{weather.main.temp}°C</p>
                 </div>
             )}
         </div>
-        </div>
+    </div>
     );
 };
 export default APIdemo;
