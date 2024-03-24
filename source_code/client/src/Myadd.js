@@ -15,7 +15,7 @@ const Ademo = (props) => {
   const handleCalculate =async(e) => {
    e.preventDefault();
    try {
-    const response = await fetch('http://ec2-3-143-230-247.us-east-2.compute.amazonaws.com:8000/api/calculate', {
+    const response = await fetch('http://localhost:3001/api/calculate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -53,12 +53,20 @@ return (
         <div className="container-fluid d-flex justify-content-center">
           <h1 style={myIS}>ADDITION PAGE</h1>
         </div>
+        <div className="d-flex">
         <button
               className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '4px' }}
               onClick={() => navigate("/Myprofile")}
             >
               Profile
             </button>
+            <button className="btn btn-danger ml-2" style={{ backgroundColor: 'orange' ,marginRight: '4px' }} onClick={() => navigate("/MyInventory")}>
+            Inventory
+          </button>
+          <button className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }} onClick={() => navigate("/MyAPI")}>
+            API
+          </button>  
+        </div>
       </nav>
       <div className="container mt-5">
         <form className="mt-4">
