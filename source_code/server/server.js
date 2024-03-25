@@ -6,14 +6,14 @@ const express = require('express');
 const cors = require('cors');
 const axios=require('axios');
 const AWS = require('aws-sdk');
-const port = 3001;
-const host=process.env.HOSTNAME ||'http://localhost:';
+const port = 9000;
+const host=process.env.HOSTNAME ||'http://ec2-35-153-46-21.compute-1.amazonaws.com:';
 const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 app.use(express.static(path.join(__dirname,'Public')))
 var corsOptions={
-  origin:["http://localhost:3000"],
+  origin:["http://ec2-35-153-46-21.compute-1.amazonaws.com:9000"],
 }
 
 app.use(bodyParser.json());

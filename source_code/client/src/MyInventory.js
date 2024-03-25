@@ -50,7 +50,7 @@ const Indemo = () => {
     const handleRenderItems = async (e) => {
         try {
         
-            const response = await fetch('http://localhost:3001/api/renderItems');
+            const response = await fetch('http://ec2-35-153-46-21.compute-1.amazonaws.com:9000/api/renderItems');
             if (!response.ok) {
                 throw new Error('Failed to get inventory items');
             }
@@ -90,7 +90,7 @@ const Indemo = () => {
             formData.append('quantity', iQuantity);
             formData.append('image', image);
 
-            const res = await fetch('http://localhost:3001/api/addItem', {
+            const res = await fetch('http://ec2-35-153-46-21.compute-1.amazonaws.com:9000/api/addItem', {
                 method: 'POST',
                 body: formData
             });
@@ -110,7 +110,7 @@ const Indemo = () => {
 
     const handleDeleteItem = async (itemId) => {
         try {
-          const response = await fetch(`http://localhost:3001/api/deleteItem/${itemId}`, {
+          const response = await fetch(`http://ec2-35-153-46-21.compute-1.amazonaws.com:9000/api/deleteItem/${itemId}`, {
             method: 'DELETE'
           });
           
@@ -130,7 +130,7 @@ const Indemo = () => {
         setSelectedItemId(itemId);
         setIsModale(true);
         try {
-            const response = await fetch(`http://localhost:3001/api/getItem/${itemId}`);
+            const response = await fetch(`http://ec2-35-153-46-21.compute-1.amazonaws.com:9000/api/getItem/${itemId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch item details');
             }
@@ -163,7 +163,7 @@ const Indemo = () => {
            
             
     
-            const res = await fetch(`http://localhost:3001/api/updateItem/${selectedItemId}`, {
+            const res = await fetch(`http://ec2-35-153-46-21.compute-1.amazonaws.com:9000/api/updateItem/${selectedItemId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

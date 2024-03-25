@@ -12,7 +12,7 @@ const APIdemo = () => {
 
     const fetchWeather = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/weather`, { 
+            const response = await axios.get(`http://ec2-35-153-46-21.compute-1.amazonaws.com:9000/weather`, { 
                 params: { city, country } 
             });
             if (response.data) {
