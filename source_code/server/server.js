@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "Public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -25,8 +25,8 @@ mongoose
 
 // AWS Configuration
 AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: "AKIAQ3EGQ7C4XFS7MFFA",
+  secretAccessKey: "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",
 });
 const s3 = new AWS.S3();
 
