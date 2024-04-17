@@ -17,7 +17,7 @@ const Prodemo = () => {
       <nav className="navbar navbar-expand-lg" style={{ backgroundColor: 'purple' }}>
         <button
           className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginLeft: '4px' }}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/Home")}
         >
           Home
         </button>
@@ -25,6 +25,12 @@ const Prodemo = () => {
           <h1 style={myIS}>PROFILE PAGE</h1>
         </div>
         <div className="d-flex">
+        <button
+              className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
+              onClick={() => navigate("/Mydetails")}
+            >
+              User Details
+            </button>
         <button
               className="btn btn-danger ml-2" style={{ backgroundColor: 'orange' ,marginRight: '4px' }}
               onClick={() => navigate("/Myadd")}
@@ -37,6 +43,12 @@ const Prodemo = () => {
           <button className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }} onClick={() => navigate("/MyAPI")}>
             API
           </button>
+          <button
+              className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
+              onClick={() => navigate("/")}
+            >
+              SIGNOUT
+            </button>
         </div>
       </nav>
       <div className="container mt-5">

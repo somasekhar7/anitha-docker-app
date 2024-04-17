@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const Person = (props) => {
   const navigate = useNavigate();
   const myIS = {
@@ -10,36 +9,57 @@ const Person = (props) => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light mb-1" style={{ backgroundColor: 'purple' }}>
+      <nav
+        className="navbar navbar-expand-lg navbar-light mb-1"
+        style={{ backgroundColor: "purple" }}
+      >
         <div className="container-fluid d-flex justify-content-center">
           <h1 style={myIS}>ANITHA REDDY BAPATHU</h1>
         </div>
         <div className="d-flex">
-            <button
-              className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
-              onClick={() => navigate("/Myprofile")}
-            >
-              Profile
-            </button>
-            <button
-              className="btn btn-danger ml-2" style={{ backgroundColor: 'orange' ,marginRight: '4px' }}
-              onClick={() => navigate("/Myadd")}
-            >
-              Addition
-            </button>
-            <button
-              className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
-              onClick={() => navigate("/MyInventory")}
-            >
-              Inventory
-            </button>
-            <button
-              className="btn btn-danger mr-3" style={{ backgroundColor: 'orange' ,marginRight: '8px' }}
-              onClick={() => navigate("/MyAPI")}
-            >
-              API
-            </button>
-          </div>
+          <button
+            className="btn btn-danger mr-3"
+            style={{ backgroundColor: "orange", marginRight: "8px" }}
+            onClick={() => navigate("/Myprofile")}
+          >
+            Profile
+          </button>
+          <button
+            className="btn btn-danger mr-3"
+            style={{ backgroundColor: "orange", marginRight: "8px" }}
+            onClick={() => navigate("/Mydetails")}
+          >
+            User Details
+          </button>
+          <button
+            className="btn btn-danger ml-2"
+            style={{ backgroundColor: "orange", marginRight: "4px" }}
+            onClick={() => navigate("/Myadd")}
+          >
+            Addition
+          </button>
+          <button
+            className="btn btn-danger mr-3"
+            style={{ backgroundColor: "orange", marginRight: "8px" }}
+            onClick={() => navigate("/MyInventory")}
+          >
+            Inventory
+          </button>
+          <button
+            className="btn btn-danger mr-3"
+            style={{ backgroundColor: "orange", marginRight: "8px" }}
+            onClick={() => navigate("/MyAPI")}
+          >
+            API
+          </button>
+          <button
+            className="btn btn-danger mr-3"
+            style={{ backgroundColor: "orange", marginRight: "8px" }}
+            onClick={() => navigate("/")}
+          >
+            SIGNOUT
+          </button>
+        </div>
       </nav>
     </>
   );
